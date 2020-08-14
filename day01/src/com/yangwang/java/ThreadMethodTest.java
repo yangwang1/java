@@ -38,7 +38,8 @@ public class ThreadMethodTest {
         Thread.currentThread().setPriority(Thread.MIN_PRIORITY);
         for (int i = 0; i < 100; i++) {
             if (i % 2 == 0) {
-                System.out.println(Thread.currentThread().getName() + ": " + Thread.currentThread().getPriority() + ": " + i);
+                System.out.println(Thread.currentThread().getName() + ": " + Thread.currentThread().getPriority() +
+                        ": " + i);
             }
 
             if (i == 20) {
