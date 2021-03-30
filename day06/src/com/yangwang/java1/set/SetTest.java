@@ -1,5 +1,10 @@
 package com.yangwang.java1.set;
 
+import com.yangwang.java1.Person;
+import org.junit.Test;
+
+import java.util.HashSet;
+
 /**
  * 1.Set接口的框架：
  * /----Collection接口：单列集合，用来存储一个一个的对象
@@ -42,6 +47,24 @@ public class SetTest {
           Hashset底层：数组+链表的结构。
 
      */
+
+    @Test
+    public void test() {
+        HashSet set = new HashSet();
+        Person p1 = new Person("AA",1001);
+        Person p2 = new Person("BB",1002);
+
+        set.add(p1);
+        set.add(p2);
+        p1.setName("CC");
+        set.remove(p1);
+        System.out.println(set); //p2
+        set.add(new Person("CC",1001));
+        System.out.println(set); //p2 cc
+        set.add(new Person("AA",1001));
+        System.out.println(set);
+
+    }
 
 
 }

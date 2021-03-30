@@ -6,7 +6,7 @@ import java.util.Objects;
  * @author yangwang
  * @date 2020-12-28-3:18
  */
-public class Person {
+public class Person implements Comparable {
     private String name;
     private int age;
 
@@ -35,14 +35,18 @@ public class Person {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Person person = (Person) o;
-        return age == person.age &&
-                Objects.equals(name, person.name);
+
+        if (age != person.age) return false;
+        return name.equals(person.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, age);
+        int result = name.hashCode();
+        result = 31 * result + age;
+        return result;
     }
 
     @Override
@@ -51,5 +55,16 @@ public class Person {
                 "name='" + name + '\'' +
                 ", age=" + age +
                 '}';
+    }
+
+
+    @Override
+    public int compareTo(Object o) {
+        if (o instanceof Person) {
+            Person p = (Person) o;
+            return this.name.compareTo(p.name);
+        } else {
+            throw new RuntimeException("输入的数据不匹配");
+        }
     }
 }
