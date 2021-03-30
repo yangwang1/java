@@ -6,7 +6,7 @@ import java.util.Objects;
  * @author yangwang
  * @date 2020-12-28-3:18
  */
-public class Person implements Comparable {
+public class Person implements Comparable<Person> {
     private String name;
     private int age;
 
@@ -59,12 +59,12 @@ public class Person implements Comparable {
 
 
     @Override
-    public int compareTo(Object o) {
-        if (o instanceof Person) {
-            Person p = (Person) o;
-            return this.name.compareTo(p.name);
-        } else {
-            throw new RuntimeException("输入的数据不匹配");
-        }
+    public int compareTo(Person o) {
+//        if (o instanceof Person) {
+//            Person p = (Person) o;
+            return this.name.compareTo(o.name);
+//        } else {
+//            throw new RuntimeException("输入的数据不匹配");
+//        }
     }
 }
